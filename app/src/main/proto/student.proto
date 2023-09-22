@@ -1,0 +1,38 @@
+//指定  ProtoBuf 版本
+syntax = "proto3";
+
+// 指定 package
+package scaffold;
+
+option java_package = "com.leaps.scaffold.protos";
+option java_outer_classname = "StudentProtos";
+option java_multiple_files = true;
+
+message Student{
+  string name = 1;
+  int32 age = 2;
+  string email = 3;
+  repeated string course = 4;//相当于 java 的 List<String>
+  map<string, string> map = 5;
+}
+
+//定义一个天气的消息类
+message Weather{
+  int32 query = 1;
+
+  //季节
+  enum Season{
+    option allow_alias = true;
+    //春
+    SPRING = 0;
+    //夏
+    SUMMER = 1;
+    //秋
+    FALL = 2;
+    AUTUMN = 2;
+    //冬
+    WINTER = 3;
+  }
+
+  Season season = 2;
+}
